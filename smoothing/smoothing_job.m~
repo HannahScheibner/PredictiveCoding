@@ -10,8 +10,7 @@ data_directory = folder_name;
 
 [files,subject_dirs] = spm_select('ExtFPList',data_directory,'^Sub.*');
 % [files,subject_dirs] = spm_select('ExtFPList',data_directory,'dummy.xxx');
-%no dummy files in this data set? wie genau findet matlab hier die
-%"subject_dirs? --> funktioniert noch nicht
+%no dummy files in this data set?
 
 for subject = 1:2
      [scan_frames,dirs] = spm_select('ExtFPListRec',subject_dirs(subject,:),sprintf('^Sub.*',scan_direction),inf)

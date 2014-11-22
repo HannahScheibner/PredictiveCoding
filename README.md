@@ -31,6 +31,9 @@ to get 'Stimuli.mat' and 'filesizes_trn.txt')
 
 The data for this project stems from:
 http://crcns.org/data-sets/vc/vim-1/about-vim-1
+*Kay, K. N., Naselaris, T., Prenger, R. J., & Gallant, J. L. (2008). Identifying natural images from human brain activity. Nature, 452(7185), 352-355.
+Naselaris, T., Prenger, R. J., Kay, K. N., Oliver, M., & Gallant, J. L. (2009). Bayesian reconstruction of natural images from human brain activity. Neuron, 63(6), 902-915.
+
 
 1. gunzipped the data using this function:
 
