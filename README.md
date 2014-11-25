@@ -6,6 +6,7 @@ In this project, we try to see whether visual processing parallels webp image pr
 
 1. Downloaded picture files from:
 http://crcns.org/data-sets/vc/vim-1/about-vim-1
+(to automate the downloads in Windows you will need to download Cygwin to run the bash scripts (install Net>cURL during installation, then follow the instructions linked to above)
 
 2. Transformed matlab pictures into Tif format using this code:
 MatlabEncodeTif.m
