@@ -1,0 +1,35 @@
+cd /Volumes/Transcend/14_PC/01_Pictures
+for i in {1..14}; do 
+for j in {1..120}; do 
+cwebp -lossless -print_ssim -print_lsim -print_psnr ${i}_${j}_16bit.tif -o ${i}_${j}_losless.webp 2>>filesizetext.txt;
+done
+done
+
+for j in {1..70}; do 
+cwebp -lossless -print_ssim 15_${j}_16bit.tif -o 15_${j}_losless.webp 2>>filesizetext.txt;
+done
+
+for j in {1..120}; do 
+cwebp -lossless -print_ssim Val_${j}_16bit.tif -o Val_${j}_losless.webp 2>>filesizetext.txt;
+done
+
+
+OTHER OPTIONS:
+
+
+-print_ssim
+Compute and report average SSIM
+-print_lsim
+Compute and report local similarity metric
+
+-print_psnr
+Compute and report average PSNR
+-v
+print extra information
+
+-lossless
+Encode the image without any loss.
+-map int
+Output additional ASCII-map of encoding information
+-alpha_filter string
+none, fast, or best
