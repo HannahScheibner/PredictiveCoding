@@ -8,7 +8,7 @@ clear all
 
 for i = 1:length(functional_files(:,1));
     
-    matlabbatch{1}.spm.spatial.smooth.data{i,:} = functional_files(i,:);    
+    matlabbatch{1}.spm.spatial.smooth.data{i,:} = strtrim(scan_frames(i,:));    
     matlabbatch{1}.spm.spatial.smooth.fwhm = [4 4 4];
     % spatial resolution of the data: 2x2x2.5 voxel
     matlabbatch{1}.spm.spatial.smooth.dtype = 0;
@@ -17,5 +17,4 @@ for i = 1:length(functional_files(:,1));
     spm('defaults', 'FMRI');
     spm_jobman('initcfg');
     spm_jobman('run',matlabbatch);
-    
 end

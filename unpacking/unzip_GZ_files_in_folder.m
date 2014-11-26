@@ -2,6 +2,7 @@
 % UNPACKING
 % needs SPM12b installed
 % need gunzip_and_recycle.m
+% on windows Matlab needs to be started with administrative rights
 
 clear all
 
