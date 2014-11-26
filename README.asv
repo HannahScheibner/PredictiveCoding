@@ -36,10 +36,9 @@ http://crcns.org/data-sets/vc/vim-1/about-vim-1
 Naselaris, T., Prenger, R. J., Kay, K. N., Oliver, M., & Gallant, J. L. (2009). Bayesian reconstruction of natural images from human brain activity. Neuron, 63(6), 902-915.
 
 
-1. Unpack the data using this function:
-
-unpacking\unzip_GZ_files_in_folder.m
-(note that you must have all the functions in this folder in your path)
+1. gunzipped the data using this function:
+unpackin
+unzip_GZ_files_in_folder.m
 
 2. smoothed the data using this function:
 
