@@ -27,7 +27,7 @@ for k=1:15
             %rescaledpic = uint16(rescaledpic);
             rescaledpic = uint16(rescaledpic*65535);
             
-            tif = [int2str(k) '_' int2str(j) '_16bit.tif' ];
+            tif = [sprintf('%04d',k) '_' sprintf('%04d',j) '_16bit.tif' ];
             t = Tiff(tif,'w');
             tagstruct.ImageLength = size(rescaledpic, 1);
             tagstruct.ImageWidth = size (rescaledpic, 2);
@@ -54,7 +54,7 @@ for k=1:15
             %rescaledpic = uint16(rescaledpic);
             rescaledpic = uint16(rescaledpic*65535);
             
-            tif = ['15_' int2str(j) '_16bit.tif' ];
+            tif = [sprintf('%04d',k) '_' sprintf('%04d',j) '_16bit.tif' ];
             t = Tiff(tif,'w');
             tagstruct.ImageLength = size(rescaledpic, 1);
             tagstruct.ImageWidth = size (rescaledpic, 2);

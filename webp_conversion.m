@@ -1,7 +1,28 @@
-% dos('cd c:\Users\Peter\Documents\MATLAB\PredictiveCoding\download\vim-1\Pictures &')
+% CONVERTS ALL TIF FILES IN A FOLDER TO WEBP FORMAT AND SAVES SSMI
+% (STRUCTURAL SIMILARITY VALUES
+% needs SPM12b installed
+% need WEBP converter installed https://developers.google.com/speed/webp/docs/precompiled
+% on windows Matlab needs to be started with administrative rights
+
+clear all
+
+[data_directory] = spm_select(1, 'dir' )
+[webp_directory] = spm_select(1, 'dir' )
+
+cd(data_directory)
+
+%% gunzips all gz fmri files and recycles the gz file
+[tif_files] = spm_select('FPListRec',data_directory,'.*\.tif$');
+[webp_exe] = spm_select('FPListRec',webp_directory,'cwebp.exe');
 
 
-% [status, cmdout] = dos('C:\webp\bin\cwebp -lossless -print_ssim -print_lsim -print_psnr c:\1_1_16bit.tif -o c:\1_1_16bit.tif_losless.webp', '-echo')
-
-
-[status, cmdout] = dos('C:\webp\bin\cwebp -lossless -print_ssim c:\1_1_16bit.tif -o c:\1_1_16bit.tif_losless.webp', '-echo')
+for i = 1:length(tif_files(:,1));
+    
+    tif_file = strtrim(tif_files(i,:));
+    dos_com = sprintf('%s -lossless -print_ssim  -print_lsim -print_psnr %s -o %s.webp', webp_exe, tif_file, tif_file)
+    [status, cmdout] = dos(dos_com)
+    k = strfind(cmdout, 'Total:')
+    ssim{i,1} = tif_file;
+    ssim{i,2} = cmdout(k+6:end);
+end
+save ssim ssim
