@@ -2,7 +2,7 @@ clc
 clear all
 
 % specify model name:
-model = 'smoothed_pmod_test'
+model = 'smoothed_pmod_comp'
 comma = ','
 % number of scans
 number_of_scans = 672
