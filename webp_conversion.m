@@ -11,7 +11,6 @@ clear all
 
 cd(data_directory)
 
-%% gunzips all gz fmri files and recycles the gz file
 [tif_files] = spm_select('FPListRec',data_directory,'.*\.tif$');
 [webp_exe] = spm_select('FPListRec',webp_directory,'cwebp.exe');
 
