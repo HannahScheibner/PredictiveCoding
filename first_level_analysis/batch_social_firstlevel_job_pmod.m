@@ -38,7 +38,7 @@ for subject = 1
     
     spm_session = 0;
     
-    for session = 1:5
+    for session = 1
         
         for run = 1:5
             
@@ -114,6 +114,6 @@ for subject = 1
     spm('defaults', 'FMRI');
     spm_jobman('initcfg');
     spm_jobman('run',matlabbatch);
-    
+   
     
 end

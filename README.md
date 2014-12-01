@@ -44,5 +44,11 @@ unpacking\unzip_GZ_files_in_folder.m
 
 2. smoothed the data using this function:
 
+3. run first level analysis:
+- needs vast amount of RAM or virtual ram (in windows set your page file to, say 50 gb of RAM)
+- set your MATLAB preferences to support .Mat files larger than 2gb. Preferences > General > Mat files > Version 7.3
+- open spm_spm.m and comment out line 725 and add the following:
+% save('SPM.mat','SPM', spm_get_defaults('mat.format'));
+save('SPM.mat','SPM', '-v7.3')
 
 
