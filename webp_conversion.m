@@ -11,6 +11,7 @@ clear all
 
 cd(data_directory)
 
+<<<<<<< Updated upstream
 [tif_files] = spm_select('FPListRec',data_directory,'.*\.tif$');
 [webp_exe] = spm_select('FPListRec',webp_directory,'cwebp.exe');
 
@@ -25,3 +26,25 @@ for i = 1:length(tif_files(:,1));
     ssim{i,2} = cmdout(k+6:end);
 end
 save ssim ssim
+=======
+
+[status, cmdout] = dos('C:\webp\bin\cwebp -lossless -print_ssim c:\1_1_16bit.tif -o c:\1_1_16bit.tif_losless.webp', '-echo')
+
+
+[data_directory] = spm_select(1, 'dir' )
+
+
+
+unix('cd data_directory; cwebp -lossless -print_ssim 1_1_16bit.tif -o 1_1_16bit.tif_losless.webp')
+
+unix('cd data_directory; cwebp -lossless -print_ssim 1_1_16bit.tif -o 1_1_16bit.tif_losless.webp')
+
+unix('cwebp -lossless -print_ssim 1_1_16bit.tif -o 1_1_16bit.tif_losless.webp')
+
+unix(cwebp -lossless -print_ssim 1_1_16bit.tif -o 1_1_16bit.tif_losless.webp)
+
+
+
+[status, cmdout] = system('alloc')  
+system('cd /Users/hannahscheibner/Desktop ; cwebp -lossless -print_ssim 1_1_16bit.tif -o 1_1_16bit.tif_losless.webp')
+>>>>>>> Stashed changes
