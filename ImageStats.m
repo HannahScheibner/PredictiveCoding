@@ -1,20 +1,21 @@
-% CONVERTS ALL TIF FILES IN A FOLDER TO WEBP FORMAT AND SAVES SSMI
-% (STRUCTURAL SIMILARITY VALUES
-% needs SPM12b installed
-% need WEBP converter installed https://developers.google.com/speed/webp/docs/precompiled
-% on windows Matlab needs to be started with administrative rights
+% calculates image statistics for each webp picture
 
 clear all
 
 % [webp_directory] = spm_select(1, 'dir' )
 
+%% select files
 webp_directory = '/Volumes/Transcend/14_PC/01_Pictures';
 
-%% gunzips all gz fmri files and recycles the gz file
+
 [webp_files] = spm_select('FPListRec',webp_directory,'.*\.webp$');
 [tif_files] = spm_select('FPListRec',webp_directory,'.*\.tif$');
 
  tif_file = strtrim(tif_files(1,:));
+ 
+ %% calculate filesize and rms
+ % note that I am not sure whether I ordered the tif and webpfiles in the
+ % same way. may need to reconfigure accordingly
 
 for i = 1:length(webp_files(:,1));
     
@@ -35,18 +36,19 @@ for i = 1:length(webp_files(:,1));
     tif_file = strtrim(tif_files(i,:));
     I = imread(tif_file);
     RMS=std(double(I(:)/max(I(:))));
-    Avg=sfPlot(I,0);
+    %Avg=sfPlot(I,0); % ? several values per image --> how to handle this??
     %RMS
     file.rms{i} = RMS;
     %avg
-    file.avg{i} = Avg;
+    %file.avg{i} = Avg;
     tiffiles{i} = I;
     
 end
 
+%% calculate luminance and contrast
 stats = imstats(tiffiles)
 
-%% zunächst einmal Korrelationen berechnen
+%% calculate correlations
 
 X = zeros(length(webp_files(:,1)), 4);
 

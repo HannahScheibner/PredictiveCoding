@@ -10,11 +10,12 @@ clear all
 %webp_directory = 'C:\Users\Peter\Documents\GitHub\PredictiveCoding';
 cd(webp_directory)
 
-%% gunzips all gz fmri files and recycles the gz file
+
 % [webp_files] = spm_select('FPListRec',webp_directory,'.*\.webp$');
 load('Stimuli.mat')
 load('file.mat')
 load ('stats.mat')
+
 
 for session = 1:25;
     
