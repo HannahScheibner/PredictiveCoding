@@ -31,9 +31,6 @@ for session = 1:25;
         
         % add all picture filesizes to the corresponding events for Parametric modulator
         onsets.filesize{:,session}(pic) = file.size{pic_no};
-        onsets.rms{:,session}(pic) = file.rms{pic_no};
-        onsets.meanVec{:,session}(pic) = stats.meanVec(pic_no);
-        onsets.stdVec{:,session}(pic) = stats.stdVec(pic_no);
         
     end
 end

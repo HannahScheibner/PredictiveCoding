@@ -14,7 +14,7 @@ webp_directory = '/Volumes/Transcend/14_PC/01_Pictures';
 [webp_files] = spm_select('FPListRec',webp_directory,'.*\.webp$');
 [tif_files] = spm_select('FPListRec',webp_directory,'.*\.tif$');
 
- 
+ tif_file = strtrim(tif_files(1,:));
 
 for i = 1:length(webp_files(:,1));
     
@@ -35,30 +35,43 @@ for i = 1:length(webp_files(:,1));
     tif_file = strtrim(tif_files(i,:));
     I = imread(tif_file);
     RMS=std(double(I(:)/max(I(:))));
-    %Avg=sfPlot(I);
+    Avg=sfPlot(I,0);
     %RMS
     file.rms{i} = RMS;
     %avg
-    %file.avg{i} = Avg;
+    file.avg{i} = Avg;
+    tiffiles{i} = I;
     
 end
-save file file
 
+stats = imstats(tiffiles)
 
- %corrcoef(X) returns a matrix R of correlation coefficients calculated from an input matrix X 
- %whose rows are observations and whose columns are variables. 
-X = zeros(length(webp_files(:,1)), 2);
+%% zunächst einmal Korrelationen berechnen
+
+X = zeros(length(webp_files(:,1)), 4);
 
  
 for i = 1:length(webp_files(:,1));
 
     X(i,1) = file.size{i};
     X(i,2) = file.rms{i};
+    X(i,3) = stats.meanVec(i);
+    X(i,4) = stats.stdVec(i);
+     
 end
 
 [r,p] = corrcoef(X) 
 
 
+%% save files
 
-%zunächst einmal Korrelationen berechnen
+[save_directory] = spm_select(1, 'dir' )
+
+%webp_directory = 'C:\Users\Peter\Documents\GitHub\PredictiveCoding';
+cd(save_directory)
+
+save file file
+save stats stats
+
+
 
