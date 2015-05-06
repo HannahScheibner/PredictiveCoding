@@ -5,14 +5,13 @@ clear all
 % [webp_directory] = spm_select(1, 'dir' )
 
 %% select files
-webp_directory = '/Volumes/Transcend/14_PC/01_Pictures';
+webp_directory = '/Volumes/Transcend/14_PC/04_ImageData/Pictures';
 
 
-[webp_files] = spm_select('FPListRec',webp_directory,'.*\.webp$');
+[webp_files] = spm_select('FPListRec',webp_directory,'^0.*.webp$');
 [tif_files] = spm_select('FPListRec',webp_directory,'.*\.tif$');
 
- tif_file = strtrim(tif_files(1,:));
- 
+
  %% calculate filesize and rms
  % note that I am not sure whether I ordered the tif and webpfiles in the
  % same way. may need to reconfigure accordingly
@@ -32,15 +31,15 @@ for i = 1:length(webp_files(:,1));
     % file size
     file.size{i} = file_data.bytes;
     
-    %% other image characteristics
+    % other image characteristics
     tif_file = strtrim(tif_files(i,:));
     I = imread(tif_file);
     RMS=std(double(I(:)/max(I(:))));
-    %Avg=sfPlot(I,0); % ? several values per image --> how to handle this??
+    Avg=sfPlot(I,0); % ? several values per image --> how to handle this??
     %RMS
     file.rms{i} = RMS;
     %avg
-    %file.avg{i} = Avg;
+    file.avg{i} = Avg;
     tiffiles{i} = I;
     
 end
@@ -63,6 +62,7 @@ for i = 1:length(webp_files(:,1));
 end
 
 [r,p] = corrcoef(X) 
+corrplot(X)
 
 
 %% save files
@@ -74,6 +74,10 @@ cd(save_directory)
 
 save file file
 save stats stats
+
+
+
+
 
 
 

@@ -18,7 +18,7 @@ cd(data_directory)
 
 for i = 1:length(tif_files(:,1));
     
-    tif_file = strtrim(tif_files(i,:));
+    tif_file = strtrim(tif_files(i,:)
     dos_com = sprintf('%s -lossless -print_ssim  -print_lsim -print_psnr %s -o %s.webp', webp_exe, tif_file, tif_file)
     [status, cmdout] = dos(dos_com)
     k = strfind(cmdout, 'Total:')

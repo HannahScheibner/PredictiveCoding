@@ -1,17 +1,45 @@
-cd /Volumes/Transcend/14_PC/01_Pictures
-for i in {1..14}; do 
-for j in {1..120}; do 
-cwebp -lossless -print_ssim -print_lsim -print_psnr ${i}_${j}_16bit.tif -o ${i}_${j}_losless.webp 2>>filesizetext.txt;
-done
-done
-
-for j in {1..70}; do 
-cwebp -lossless -print_ssim 15_${j}_16bit.tif -o 15_${j}_losless.webp 2>>filesizetext.txt;
+cd /Volumes/Transcend/14_PC/04_ImageData/Pictures
+for i in {1..9}; do 
+	for j in {1..9}; do 
+		cwebp -lossless 000${i}_000${j}_16bit.tif -o 000${i}_000${j}.webp;
+	done
 done
 
-for j in {1..120}; do 
-cwebp -lossless -print_ssim Val_${j}_16bit.tif -o Val_${j}_losless.webp 2>>filesizetext.txt;
+for i in {1..9}; do 
+	for j in {10..99}; do 
+		cwebp -lossless 000${i}_00${j}_16bit.tif -o 000${i}_00${j}.webp;
+	done
 done
+
+for i in {1..9}; do 
+	for j in {100..120}; do 
+		cwebp -lossless 000${i}_0${j}_16bit.tif -o 000${i}_0${j}.webp;
+	done
+done
+
+
+for i in {10..14}; do 
+	for j in {1..9}; do 
+		cwebp -lossless 00${i}_000${j}_16bit.tif -o 00${i}_000${j}.webp;
+	done
+	for j in {10..99}; do 
+		cwebp -lossless 00${i}_00${j}_16bit.tif -o 00${i}_00${j}.webp;
+	done
+	for j in {100..120}; do 
+		cwebp -lossless 00${i}_0${j}_16bit.tif -o 00${i}_0${j}.webp;
+	done
+done
+
+
+for j in {1..9}; do 
+cwebp -lossless 0015_000${j}_16bit.tif -o 0015_000${j}_.webp;
+done
+
+for j in {10..70}; do 
+cwebp -lossless 0015_00${j}_16bit.tif -o 0015_00${j}_.webp;
+done
+
+for f in *.webp“; do mv "$f" „${f/„/}“;
 
 
 OTHER OPTIONS:
